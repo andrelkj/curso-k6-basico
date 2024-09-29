@@ -3,12 +3,20 @@ import { sleep, check } from 'k6';
 
 import uuid from './libs/uuid.js';
 
+import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js';
+
+export function handleSummary(data) {
+  return {
+    'summary.html': htmlReport(data),
+  };
+}
+
 export const options = {
   vus: 10,
   duration: '30s',
   thresholds: {
     http_req_duration: ['p(95)<2000'], // 95% of requests are expected to run in less than 2 seconds
-    http_req_failed: ['rate<0.01'] // 1% of requests send can fail
+    http_req_failed: ['rate<0.01'], // 1% of requests send can fail
   },
 };
 
