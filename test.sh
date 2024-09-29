@@ -1,4 +1,4 @@
 curl --request POST \
     --url http://localhost:3333/signup \
     --header 'Content-Type: application/json' \
-    --data '{"email": "user2@test.com", "password": "pwd123"}'
+    --data '{"email": "user@test.com", "password": "pwd123"}'
